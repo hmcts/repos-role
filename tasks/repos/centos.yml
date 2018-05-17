@@ -41,7 +41,7 @@
     dest: "/etc/pki/rpm-gpg/{{ item }}"
     owner: 'root'
     group: 'root'
-    mode: '0644'
+    mode: 0644
   become: yes
   with_items: "{{ repos_role_install_gpg_keys }}"
 
@@ -51,6 +51,6 @@
     dest: "/etc/pki/rpm-gpg/{{ item }}"
     owner: 'root'
     group: 'root'
-    mode: '0644'
+    mode: 0644
   become: yes
   with_items: "{{ repos_role_install_gpg_keys_sensitive }}"
