@@ -1,0 +1,18 @@
+---
+driver:
+  name: docker
+docker:
+  containers:
+    - name: repos-role-${BRANCH_NAME}-${BUILD_NUMBER}
+      image: centos/systemd
+      image_version: latest
+      build_image: yes
+      privileged: yes
+      cap_add:
+        - SYS_ADMIN
+      environment:
+        http_proxy: ${http_proxy}
+ansible:
+  playbook: tests/playbook.yml
+verifier:
+  name: testinfra

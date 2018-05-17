@@ -1,0 +1,13 @@
+---
+- hosts: all
+  roles:
+    - role: repos-role
+
+  tasks:
+    - name: "(Molecule test only) Clear yum cache for previous repos"
+      command: yum clean all warn=no
+      changed_when: false
+
+    - name: "(Molecule test only) Generate yum cache for new repos"
+      command: yum makecache warn=no
+      changed_when: false

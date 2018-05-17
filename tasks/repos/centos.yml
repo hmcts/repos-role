@@ -1,0 +1,56 @@
+---
+- name: 'Setup widespread repositories'
+  yum_repository:
+    file: "{{ repo.file }}"
+    name: "{{ repo.name }}"
+    description: "{{ repo.description }}"
+    baseurl: "{{ repo.baseurl }}"
+    enabled: "{{ '1' if repo.enabled is not defined or repo.enabled else '0' }}"
+    gpgkey: "{{ repo.gpgkey if repo.gpgkey is defined else 'file:///dev/null' }}"
+    gpgcheck: "{{ repo.gpgcheck if repo.gpgcheck is defined else true }}"
+  with_items: "{{ repos_role_install_repos }}"
+  loop_control:
+    loop_var: repo
+  notify: "clear yum cache"
+
+- name: 'Setup sensitive repositories'
+  yum_repository:
+    file: "{{ repo.file }}"
+    name: "{{ repo.name }}"
+    description: "{{ repo.description }}"
+    baseurl: "{{ repo.baseurl }}"
+    enabled: "{{ '1' if repo.enabled is not defined or repo.enabled else '0' }}"
+    gpgkey: "{{ repo.gpgkey if repo.gpgkey is defined else 'file:///dev/null' }}"
+    gpgcheck: "{{ repo.gpgcheck if repo.gpgcheck is defined else true }}"
+  with_items: "{{ repos_role_install_repos_sensitive }}"
+  loop_control:
+    loop_var: repo
+  notify: "clear yum cache"
+
+- name: "Remove unwanted repos"
+  file:
+    path: "/etc/yum.repos.d/{{ item }}"
+    state: absent
+  with_items: "{{ repos_role_remove_repos }}"
+  notify: "clear yum cache"
+  become: yes
+
+- name: 'Setup widespread GPG keys'
+  copy:
+    src: "centos7/keys/{{ item }}"
+    dest: "/etc/pki/rpm-gpg/{{ item }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  become: yes
+  with_items: "{{ repos_role_install_gpg_keys }}"
+
+- name: 'Setup sensitive GPG keys'
+  copy:
+    src: "centos7/keys/{{ item }}"
+    dest: "/etc/pki/rpm-gpg/{{ item }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  become: yes
+  with_items: "{{ repos_role_install_gpg_keys_sensitive }}"

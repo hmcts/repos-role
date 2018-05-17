@@ -1,0 +1,61 @@
+---
+repos_role_install_repos:
+  # from CentOS-Base.repo
+  - {
+      file: "CentOS-Base",
+      name: "base",
+      description: "CentOS-$releasever - Base",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/os/$basearch/",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    }
+  - {
+      file: "CentOS-Base",
+      name: "updates",
+      description: "CentOS-$releasever - Updates",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/updates/$basearch/",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    }
+  - {
+      file: "CentOS-Base",
+      name: "extras",
+      description: "CentOS-$releasever - Extras",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/extras/$basearch/",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    }
+  - {
+      file: "CentOS-Base",
+      name: "centosplus",
+      description: "CentOS-$releasever - Plus",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/centosplus/$basearch/",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7",
+      enabled: false
+    }
+  # epel
+  - {
+      file: "epel",
+      name: "epel",
+      description: "Extra Packages for Enterprise Linux 7 - $basearch",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-epel",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7"
+    }
+  - {
+      file: "epel",
+      name: "epel-debuginfo",
+      description: "Extra Packages for Enterprise Linux 7 - $basearch - Debug",
+      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-epel/debug",
+      gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7",
+      enabled: false
+    }
+
+repos_role_install_repos_sensitive: []
+
+repos_role_install_gpg_keys:
+  - 'RPM-GPG-KEY-EPEL-7'
+  - 'RPM-GPG-KEY-CentOS-7'
+repos_role_install_gpg_keys_sensitive: []
+
+repos_role_remove_repos:
+  - 'Openlogic.repo'
+  - 'nginx.repo'
+  - 'elastic.repo'
+  - 'nodesource.repo'

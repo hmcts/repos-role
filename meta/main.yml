@@ -1,0 +1,8 @@
+galaxy_info:
+  author: HMCTS Reform programme
+  description: Install yum repository configuration en masse
+  company: HMCTS
+
+  license: MIT
+
+dependencies: []
