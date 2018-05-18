@@ -51,7 +51,6 @@ repos_role_install_repos_sensitive: []
 
 repos_role_install_gpg_keys:
   - 'RPM-GPG-KEY-EPEL-7'
-  - 'RPM-GPG-KEY-CentOS-7'
 repos_role_install_gpg_keys_sensitive: []
 
 repos_role_remove_repos:
