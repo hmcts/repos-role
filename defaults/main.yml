@@ -5,28 +5,28 @@ repos_role_install_repos:
       file: "CentOS-Base",
       name: "base",
       description: "CentOS-$releasever - Base",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/os/$basearch/",
+      baseurl: "http://www.mirrorservice.org/sites/mirror.centos.org/$releasever/os/$basearch/",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
     }
   - {
       file: "CentOS-Base",
       name: "updates",
       description: "CentOS-$releasever - Updates",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/updates/$basearch/",
+      baseurl: "http://www.mirrorservice.org/sites/mirror.centos.org/$releasever/updates/$basearch/",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
     }
   - {
       file: "CentOS-Base",
       name: "extras",
       description: "CentOS-$releasever - Extras",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/extras/$basearch/",
+      baseurl: "http://www.mirrorservice.org/sites/mirror.centos.org/$releasever/extras/$basearch/",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
     }
   - {
       file: "CentOS-Base",
       name: "centosplus",
       description: "CentOS-$releasever - Plus",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-centos/$releasever/centosplus/$basearch/",
+      baseurl: "http://www.mirrorservice.org/sites/mirror.centos.org/$releasever/centosplus/$basearch/",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7",
       enabled: false
     }
@@ -35,14 +35,14 @@ repos_role_install_repos:
       file: "epel",
       name: "epel",
       description: "Extra Packages for Enterprise Linux 7 - $basearch",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-epel",
+      baseurl: "http://download.fedoraproject.org/pub/epel/7/$basearch",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7"
     }
   - {
       file: "epel",
       name: "epel-debuginfo",
       description: "Extra Packages for Enterprise Linux 7 - $basearch - Debug",
-      baseurl: "https://artifactory.reform.hmcts.net/artifactory/ext-epel/debug",
+      baseurl: "http://download.fedoraproject.org/pub/epel/7/$basearch/debug",
       gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7",
       enabled: false
     }
